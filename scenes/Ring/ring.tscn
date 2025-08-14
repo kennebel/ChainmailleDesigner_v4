@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ceax6fl84lsil"]
+
+[node name="Ring" type="Node3D"]
+
+[node name="RingRig" type="Node3D" parent="."]
+
+[node name="VisualItem" type="Node3D" parent="RingRig"]
