@@ -4,35 +4,31 @@ using System;
 public partial class WeaveControl : Node3D
 {
     public enum Weave { FourInOne, SixInOne, DragonScale, Scales }
+    public enum WeaveState { Compressed, Open }
 
     [Export]
     public MainControl Main { get; set; }
     [Export]
     public PackedScene RingTemplate { get; set; }
 
-    public void Generate(Weave weave, int rows, int columns)
+    public void Generate(Weave weave, int rows, int columns, WeaveState weaveState = WeaveState.Compressed)
     {
         Utilities.RemoveChildren(this);
 
         switch (weave)
         {
             case Weave.FourInOne:
-                GenerateFourInOne(rows, columns);
+                GenerateFourInOne(rows, columns, weaveState);
                 break;
         }
     }
 
-    private void GenerateFourInOne(int rows, int columns)
+    private void GenerateFourInOne(int rows, int columns, WeaveState weaveState)
     {
-        if ((rows % 2) == 0) { rows++; }
-        if ((columns % 2) == 0) { columns++; }
-
-        var RowHalf = (int)(rows / 2f);
-        var ColHalf = (int)(columns / 2f);
-
-        for (int j = -ColHalf; j <= ColHalf; j++)
+        
+        for (int i = -rows; i <= rows; i++)
         {
-            for (int i = -RowHalf; i <= RowHalf; i++)
+            for (int j = -columns; j <= columns; j++)
             {
 
             }
