@@ -1,11 +1,26 @@
-[gd_scene format=3 uid="uid://cbnteiptd2vjh"]
+[gd_scene load_steps=3 format=3 uid="uid://cbnteiptd2vjh"]
+
+[ext_resource type="Script" uid="uid://dq3p8u6vckugs" path="res://scenes/Main/MainControl.cs" id="1_gol0p"]
+[ext_resource type="PackedScene" uid="uid://71sgtxutlbiy" path="res://scenes/Testing/test_layout_4_in_1.tscn" id="2_br8qb"]
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_gol0p")
 
 [node name="Objects" type="Node3D" parent="."]
+
+[node name="TestLayout_4in1" parent="Objects" instance=ExtResource("2_br8qb")]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="CameraRig" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0)
+projection = 1
+size = 5.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CameraRig/Camera3D"]
