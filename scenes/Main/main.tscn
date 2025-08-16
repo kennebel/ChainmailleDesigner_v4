@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbnteiptd2vjh"]
+[gd_scene load_steps=4 format=3 uid="uid://cbnteiptd2vjh"]
 
 [ext_resource type="Script" uid="uid://dq3p8u6vckugs" path="res://scenes/Main/MainControl.cs" id="1_gol0p"]
-[ext_resource type="PackedScene" uid="uid://71sgtxutlbiy" path="res://scenes/Testing/test_layout_4_in_1.tscn" id="2_br8qb"]
+[ext_resource type="PackedScene" uid="uid://dqs6rpedr3qna" path="res://scenes/Weaves/weave_4_in_1.tscn" id="2_br8qb"]
+[ext_resource type="Script" uid="uid://cvm253pyoc5yt" path="res://scenes/Main/CameraControl.cs" id="3_px18m"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_gol0p")
 
 [node name="Objects" type="Node3D" parent="."]
 
-[node name="TestLayout_4in1" parent="Objects" instance=ExtResource("2_br8qb")]
+[node name="Weave_4in1" parent="Objects" node_paths=PackedStringArray("Main") instance=ExtResource("2_br8qb")]
+Main = NodePath("../..")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -16,7 +18,11 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="CameraRig" type="Node3D" parent="."]
+[node name="CameraRig" type="Node3D" parent="." node_paths=PackedStringArray("CameraRig", "TheCamera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+script = ExtResource("3_px18m")
+CameraRig = NodePath(".")
+TheCamera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0)

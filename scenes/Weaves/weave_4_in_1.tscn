@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqs6rpedr3qna"]
+[gd_scene load_steps=3 format=3 uid="uid://dqs6rpedr3qna"]
 
 [ext_resource type="Script" uid="uid://bec4fsv2pal46" path="res://scenes/Weaves/WeaveControl.cs" id="1_yvuan"]
+[ext_resource type="PackedScene" uid="uid://ceax6fl84lsil" path="res://scenes/Ring/ring.tscn" id="2_eahjk"]
 
-[node name="Weave_4in1" type="Node3D"]
+[node name="Weave_4in1" type="Node3D" node_paths=PackedStringArray("RingsHolder")]
 script = ExtResource("1_yvuan")
+RingTemplate = ExtResource("2_eahjk")
+RingsHolder = NodePath("RingsHolder")
+
+[node name="RingsHolder" type="Node3D" parent="."]

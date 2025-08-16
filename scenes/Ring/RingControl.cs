@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class RingControl : Node
+public partial class RingControl : Node3D
 {
     [Export]
     public MainControl Main { get; set; }
@@ -11,15 +11,20 @@ public partial class RingControl : Node
     public MeshInstance3D VisualItem { get; set; }
     [Export]
     public CollisionObject3D Collider { get; set; }
+    [Export]
+    public StandardMaterial3D DefaultColor { get; set; }
+
+    public Color RingColor { get { return ((StandardMaterial3D)VisualItem.MaterialOverride).AlbedoColor; } }
 
     public override void _Ready()
     {
         Collider.InputEvent += CollisionInput;
+        VisualItem.MaterialOverride = DefaultColor;
     }
     
    	private void CollisionInput(Node camera, InputEvent @event, Vector3 eventPosition, Vector3 normal, long shapeIdx)
 	{
-        if (Main != null && (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed))
+        if (Main != null && (@event is InputEventMouseButton mouseEvent))
         {
             if (mouseEvent.ButtonIndex == MouseButton.Left)
             {

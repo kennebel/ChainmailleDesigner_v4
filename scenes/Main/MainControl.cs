@@ -6,8 +6,6 @@ public partial class MainControl : Node
     public enum ColorSelector { Left, Middle, Right }
 
     [Export]
-    public RingControl RingTemplate { get; set; }
-    [Export]
     public Color ColorLeft { get; set; } = new Color(0.9f, 0.9f, 0.9f);
     [Export]
     public Color ColorMiddle { get; set; } = new Color(0.1f, 0.9f, 0.1f);
