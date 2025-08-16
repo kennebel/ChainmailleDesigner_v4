@@ -45,6 +45,7 @@ public partial class WeaveControl : Node3D
                 if (RowOffset != 0f && j == columns - 1) { continue; }
 
                 NewRing = RingTemplate.Instantiate<Node3D>();
+                NewRing.Name = "Ring<" + i.ToString() + "," + j.ToString() + ">";
                 NewRing.Position = new Vector3(j + RowOffset, 0f, i);
                 NewRing.Rotation = new Vector3(0f, RingRotation, 0f);
                 ((RingControl)NewRing).Main = Main;

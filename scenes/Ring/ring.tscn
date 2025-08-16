@@ -12,7 +12,7 @@ script = ExtResource("1_wdc74")
 RingRig = NodePath("RingRig")
 VisualItem = NodePath("RingRig/VisualItem")
 Collider = NodePath("RingRig/VisualItem/StaticBody3D")
-DefaultColor = ExtResource("2_k75ym")
+DefaultMaterial = ExtResource("2_k75ym")
 
 [node name="RingRig" type="Node3D" parent="."]
 
@@ -26,3 +26,7 @@ mesh = ExtResource("2_68rlp")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RingRig/VisualItem/StaticBody3D"]
 transform = Transform3D(2.6, 0, 0, 0, 2.6, 0, 0, 0, 2.6, 0, 0, 0)
 shape = SubResource("SphereShape3D_k75ym")
+
+[connection signal="input_event" from="RingRig/VisualItem/StaticBody3D" to="." method="CollisionInput"]
+[connection signal="mouse_entered" from="RingRig/VisualItem/StaticBody3D" to="." method="MouseEntered"]
+[connection signal="mouse_exited" from="RingRig/VisualItem/StaticBody3D" to="." method="MouseExited"]
