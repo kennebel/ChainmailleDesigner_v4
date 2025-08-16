@@ -24,25 +24,6 @@ public partial class RingControl : Node3D
 		VisualItem.MaterialOverride = DefaultMaterial;
 	}
 
-	public override void _Input(InputEvent @event)
-	{
-		if (IsMouseEntered)
-		{
-			if (Input.IsActionPressed("color_primary"))
-			{
-				SetColor(ColorPick.Primary);
-			}
-			else if (Input.IsActionPressed("color_secondary"))
-			{
-				SetColor(ColorPick.Secondary);
-			}
-			else if (Input.IsActionPressed("color_tertiary"))
-			{
-				SetColor(ColorPick.Tertiary);
-			}
-		}
-	}
-
 	private void CollisionInput(Node camera, InputEvent @event, Vector3 eventPosition, Vector3 normal, long shapeIdx)
 	{
 		if (Main != null && (@event is InputEventMouseButton mouseEvent))
@@ -56,6 +37,25 @@ public partial class RingControl : Node3D
 				SetColor(ColorPick.Secondary);
 			}
 			else if (mouseEvent.ButtonIndex == MouseButton.Right)
+			{
+				SetColor(ColorPick.Tertiary);
+			}
+		}
+	}
+
+	public override void _Input(InputEvent @event)
+	{
+		if (IsMouseEntered)
+		{
+			if (Input.IsActionPressed("color_primary"))
+			{
+				SetColor(ColorPick.Primary);
+			}
+			else if (Input.IsActionPressed("color_secondary"))
+			{
+				SetColor(ColorPick.Secondary);
+			}
+			else if (Input.IsActionPressed("color_tertiary"))
 			{
 				SetColor(ColorPick.Tertiary);
 			}
